@@ -23,6 +23,7 @@ find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(tf2 REQUIRED)
+find_package(Eigen3 3.3 REQUIRED)
 
 include_directories(
   include
@@ -36,6 +37,7 @@ set(pf_src
 
 add_executable(pf ${pf_src})
 ament_target_dependencies(pf rclcpp std_msgs geometry_msgs sensor_msgs nav_msgs)
+target_link_libraries(pf Eigen3::Eigen)
 
 install(TARGETS
   pf
